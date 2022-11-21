@@ -476,7 +476,7 @@ def main():
         st.subheader("Delete Data")
 
         st.subheader("Current Data")
-        res_c = db.view_country()
+#        res_c = db.view_country()
         with st.expander("View Country"):
             df = pd.DataFrame(res_c, columns=["Country Name", "Population"])
             st.dataframe(df)
