@@ -50,8 +50,11 @@ def main():
             D_id = st.text_area("Disease ID")
 
         if st.button("Add Disease"):
-            db.add_disease(D_disease_code, D_pathogen, D_description, D_id)
-            st.success("New DISEASE was successfully added: {}".format(D_disease_code))
+            f = db.add_disease(D_disease_code, D_pathogen, D_description, D_id)
+            if f ==1:
+                st.success("New DISEASE was successfully added: {}".format(D_disease_code))
+            else:
+                st.error("Invalid data!")
 
     # Discover V
     st.subheader("Add Discover")
@@ -65,8 +68,12 @@ def main():
          DS_date = st.date_input("First Encounter Date")
     
     if st.button("Add Discover"):
-        db.add_discover(DS_cname, DS_disease_code, DS_date)
-        st.success("New DISCOVER was successfully added: {}".format(DS_cname))
+        f = db.add_discover(DS_cname, DS_disease_code, DS_date)
+        if f ==1:
+            st.success("New DISCOVER was successfully added: {}".format(DS_cname))
+        else:
+            st.error("Invalid data!")
+        
     
     # Users V
     st.subheader("Add User")
@@ -85,8 +92,11 @@ def main():
         U_cname = st.text_area("User's Country")
 
     if st.button("Add User"):
-            db.add_user(U_email, U_name, U_surname, U_salary, U_phone, U_cname)
-            st.success("New USER was successfully added: {}".format(U_name))
+            f = db.add_user(U_email, U_name, U_surname, U_salary, U_phone, U_cname)
+            if f == 1:
+                st.success("New USER was successfully added: {}".format(U_name))
+            else:
+                st.error("Invalid data!")
 
     # Doctor
     st.subheader("Add Doctor")
@@ -97,8 +107,11 @@ def main():
         DC_degree = st.text_area("Doctor's Degree")
     
     if st.button("Add Doctor"):
-        db.add_doctor(DC_email, DC_degree)
-        st.success("New DOCTOR was successfully added: {}".format(DC_email))
+        f = db.add_doctor(DC_email, DC_degree)
+        if f == 1:
+            st.success("New DOCTOR was successfully added: {}".format(DC_email))
+        else:
+            st.error("Invalid data!")
 
     # Specialize V
     st.subheader("Add Specialization")
@@ -109,8 +122,11 @@ def main():
         S_email = st.text_area("Specialization Email")
     
     if st.button("Add Specialization"):
-        db.add_specialization(S_id, S_email)
-        st.success("New SPECIALIZATION was successfully added!")
+        f = db.add_specialization(S_id, S_email)
+        if f ==1:
+            st.success("New SPECIALIZATION was successfully added!")
+        else:
+            st.error("Invalid data!")
     
     # Public Servant V
     st.subheader("Add Public Servant")
@@ -121,8 +137,11 @@ def main():
         PS_department = st.text_area("Public Servant's Department")
     
     if st.button("Add Public Servant"):
-        db.add_ps(PS_email, PS_department)
-        st.success("New Public Servant was successfully added: {}".format(PS_email))
+        f = db.add_ps(PS_email, PS_department)
+        if f == 1:
+            st.success("New Public Servant was successfully added: {}".format(PS_email))
+        else:
+            st.error("Invalid data!")
 
     # Record V
     st.subheader("Add Record")
@@ -139,8 +158,11 @@ def main():
         R_tp = st.text_area("Record Total Patients")
     
     if st.button("Add Record"):
-        db.add_rec(R_email, R_cname, R_dc, R_td, R_tp)
-        st.success("New Record was successfully added!")
+        f = db.add_rec(R_email, R_cname, R_dc, R_td, R_tp)
+        if f == 1:
+            st.success("New Record was successfully added!")
+        else:
+            st.error("Invalid data!")
     
     
 
