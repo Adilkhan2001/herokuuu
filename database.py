@@ -23,44 +23,92 @@ def add_disease_type(DT_id, DT_description):
 def add_disease(D_diseaseCode, D_pathogen, D_description, D_id):
     record = (D_diseaseCode, D_pathogen, D_description, D_id)
     query = '''INSERT INTO public.disease("diseaseCode", "pathogen", "description", "id") VALUES (%s, %s, %s, %s)'''
-    cursor.execute(query,record)
+    try:
+        cursor.execute(query,record)
+        a=1
+    except:
+        conn.rollback()
+        a = -1
     conn.commit()
+    return a
 
 def add_discover(DS_cname, DS_disease_code, DS_date):
     record = (DS_cname, DS_disease_code, DS_date)
     query = '''INSERT INTO public.discover("cname", "diseaseCode", "firstEncDate") VALUES (%s, %s, %s)'''
-    cursor.execute(query,record)
+    a = 0
+    try:
+        cursor.execute(query,record)
+        a=1
+    except:
+        conn.rollback()
+        a = -1
     conn.commit()
+    return a
 
 def add_user(U_email, U_name, U_surname, U_salary, U_phone, U_cname):
     record = (U_email, U_name, U_surname, U_salary, U_phone, U_cname)
     query = '''INSERT INTO public.users("email", "name", "surname", "salary", "phone", "cname") VALUES (%s, %s, %s, %s, %s, %s)'''
-    cursor.execute(query,record)
+    a = 0
+    try:
+        cursor.execute(query,record)
+        a=1
+    except:
+        conn.rollback()
+        a = -1
     conn.commit()
+    return a
 
 def add_doctor(DC_email, DC_degree):
     record = (DC_email, DC_degree)
     query = '''INSERT INTO public.doctor("email", "degree") VALUES (%s, %s)'''
-    cursor.execute(query,record)
+    a = 0
+    try:
+        cursor.execute(query,record)
+        a=1
+    except:
+        conn.rollback()
+        a = -1
     conn.commit()
+    return a
 
 def add_specialization(S_id, S_email):
     record = (S_id, S_email)
     query = '''INSERT INTO public.specialize("id", "email") VALUES (%s, %s)'''
-    cursor.execute(query,record)
+    a = 0
+    try:
+        cursor.execute(query,record)
+        a=1
+    except:
+        conn.rollback()
+        a = -1
     conn.commit()
+    return a
 
 def add_ps(PS_email, PS_department):
     record = (PS_email, PS_department)
     query = '''INSERT INTO public.publicservant("email", "department") VALUES (%s, %s)'''
-    cursor.execute(query,record)
+    a = 0
+    try:
+        cursor.execute(query,record)
+        a=1
+    except:
+        conn.rollback()
+        a = -1
     conn.commit()
+    return a
 
 def add_rec(R_email, R_cname, R_dc, R_td, R_tp):
     record = (R_email, R_cname, R_dc, R_td, R_tp)
     query = '''INSERT INTO public.record("email", "cname", "diseaseCode", "totalDeaths", "totalPatients") VALUES (%s, %s, %s, %s, %s)'''
-    cursor.execute(query,record)
+    a = 0
+    try:
+        cursor.execute(query,record)
+        a=1
+    except:
+        conn.rollback()
+        a = -1
     conn.commit()
+    return a
 
 # READ
 
