@@ -227,7 +227,7 @@ def main():
             df = pd.DataFrame(res_r, columns=["Email", "Country", "Disease Code", "Total Deaths", "Total Patients"])
             st.dataframe(df)
 
-    st.header("-------------------------------------------------------------")
+    # st.header("-------------------------------------------------------------")
     
     if choice == 'Update':
         st.subheader("Update Data")
@@ -491,7 +491,7 @@ def main():
             db.update_rec(R_email, R_cname, R_dc, R_td, R_tp, old_rec_email, old_rec_cname, old_rec_dc)
             st.success("Record <{},{},{}> was successfully updated!".format(old_rec_email, old_rec_cname, old_rec_dc))
             
-    st.header("-------------------------------------------------------------")
+    # st.header("-------------------------------------------------------------")
 
 
     if choice == 'Delete':
